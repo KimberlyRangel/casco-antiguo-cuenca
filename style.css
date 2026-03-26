@@ -1,0 +1,348 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Outfit:wght@300;400;600&display=swap');
+
+:root {
+    --bg-color: #050505;
+    --card-bg: #111111;
+    --accent-color: #d4af37; /* Gold */
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: 'Outfit', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+}
+
+/* Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+section {
+    padding: 100px 0;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('hero.png') center/cover no-repeat;
+    overflow: hidden;
+}
+
+.hero-content {
+    z-index: 2;
+    padding: 2rem;
+    animation: fadeInScale 1.5s var(--transition-slow);
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 10vw, 6rem);
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 300;
+}
+
+/* Glassmorphism Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1.5rem 0;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+/* Content Sections */
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title h2 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.section-title .underline {
+    width: 80px;
+    height: 3px;
+    background: var(--accent-color);
+    margin: 0 auto;
+}
+
+/* Cards & Grids */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    padding: 0; /* Changed from 2.5rem */
+    border-radius: 8px;
+    transition: var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.card-content {
+    padding: 2rem;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+}
+
+.card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+/* Maps & Navigation */
+.map-container {
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    margin-bottom: 2rem;
+}
+
+.nav-button {
+    display: inline-block;
+    padding: 1.2rem 3rem;
+    background: var(--accent-color);
+    color: var(--bg-color);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    transition: var(--transition-fast);
+}
+
+.nav-button:hover {
+    background: #fff;
+    transform: scale(1.05);
+}
+
+.card p {
+    color: var(--text-secondary);
+}
+
+/* Landmarks Grid */
+.landmark-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .landmark-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.landmark-item {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.landmark-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    transform: translateY(20px);
+    transition: var(--transition-slow);
+}
+
+.landmark-item:hover .landmark-info {
+    transform: translateY(0);
+}
+
+/* Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition-slow);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Footer */
+footer {
+    padding: 60px 0;
+    background: #000;
+    border-top: 1px solid var(--glass-border);
+    text-align: center;
+}
+
+/* Language Toggle */
+.lang-toggle {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid var(--glass-border);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    background: var(--glass-bg);
+}
+
+.lang-btn {
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-decoration: none;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.lang-btn.active {
+    color: var(--accent-color);
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.lang-btn:hover:not(.active) {
+    color: var(--text-primary);
+}
+
+.lang-divider {
+    color: var(--glass-border);
+}
+
+/* Floating Share Button */
+.share-fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: var(--accent-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+    z-index: 2000;
+    transition: var(--transition-fast);
+}
+
+.share-fab:hover {
+    transform: scale(1.1) rotate(5deg);
+    background: #ffffff;
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2);
+}
+
+.share-fab svg {
+    width: 24px;
+    height: 24px;
+}
+
+@media (max-width: 768px) {
+    .share-fab {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.gastronomy-list {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.gastronomy-item {
+    padding: 1rem 2rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 30px;
+    color: var(--accent-color);
+    font-weight: 600;
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casco Antiguo de Cuenca | Patrimonio de la Humanidad</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <div class="logo">CUENCA</div>
+            <div class="lang-toggle">
+                <span class="lang-btn active" id="lang-es" onclick="setLanguage('es')">ES</span>
+                <span class="lang-divider">|</span>
+                <span class="lang-btn" id="lang-en" onclick="setLanguage('en')">EN</span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <p data-i18n="hero-sub">Descubre la Ciudad Encantada</p>
+            <h1 data-i18n="hero-title">Casco Antiguo</h1>
+            <p data-i18n="hero-tag">Patrimonio de la Humanidad UNESCO 1996</p>
+        </div>
+    </header>
+
+    <section id="intro" class="container reveal">
+        <div class="section-title">
+            <h2 data-i18n="intro-title">Hoces del Júcar y Huécar</h2>
+            <div class="underline"></div>
+        </div>
+        <p data-i18n="intro-text" style="text-align: center; font-size: 1.2rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto;">
+            El Casco Antiguo de Cuenca es uno de los conjuntos medievales mejor conservados y más impactantes de España, asentado sobre un espolón rocoso rodeado por las profundas hoces de los ríos Júcar y Huécar.
+        </p>
+    </section>
+
+    <section id="history" class="container reveal">
+        <div class="section-title">
+            <h2 data-i18n="history-title">Historia y Origen</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <img src="images (4).jpg" alt="Cuenca Histórica" class="card-image">
+                <div class="card-content">
+                    <h3 data-i18n="hist-1-title">Fundación Musulmana</h3>
+                    <p data-i18n="hist-1-text">Aunque existen vestigios romanos, la ciudad actual nace de la fortaleza musulmana Qūnka. Fue un punto estratégico militar clave antes de la reconquista.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images (1).jpg" alt="Conquista Cristiana" class="card-image">
+                <div class="card-content">
+                    <h3 data-i18n="hist-2-title">Conquista de Alfonso VIII</h3>
+                    <p data-i18n="hist-2-text">En 1177, tras un largo asedio, el rey Alfonso VIII conquistó la ciudad, marcando el inicio de su esplendor medieval como ciudad castellana.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images (6).jpg" alt="Tres Culturas" class="card-image">
+                <div class="card-content">
+                    <h3 data-i18n="hist-3-title">Las Tres Culturas</h3>
+                    <p data-i18n="hist-3-text">Durante siglos convivieron musulmanes, judíos y cristianos, lo que otorgó a Cuenca su trazado laberíntico y su rica diversidad cultural.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="landmarks" class="container reveal">
+        <div class="section-title">
+            <h2 data-i18n="landmarks-title">Lugares Imprescindibles</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <img src="images (3).jpg" alt="Casas Colgadas" class="card-image">
+                <div class="card-content">
+                    <h3 data-i18n="land-1-title">Casas Colgadas</h3>
+                    <p data-i18n="land-1-text">El símbolo absoluto de Cuenca. Construcciones "voladas" sobre el precipicio que albergan el Museo de Arte Abstracto Español.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images (2).jpg" alt="Puente de San Pablo" class="card-image">
+                <div class="card-content">
+                    <h3 data-i18n="land-2-title">Puente de San Pablo</h3>
+                    <p data-i18n="land-2-text">Una experiencia emocionante a 40 metros de altura. La mejor vista panorámica de las Casas Colgadas y la hoz del Huécar.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images (7).jpg" alt="Catedral de Cuenca" class="card-image">
+                <div class="card-content">
+                    <h3 data-i18n="land-3-title">Catedral de Santa María</h3>
+                    <p data-i18n="land-3-text">La primera catedral gótica de Castilla, situada en la Plaza Mayor, con una fachada que evoca el estilo de Notre Dame.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="hero.png" alt="Rascacielos de San Martín" class="card-image">
+                <div class="card-content">
+                    <h3 data-i18n="land-4-title">Rascacielos de San Martín</h3>
+                    <p data-i18n="land-4-text">Arquitectura medieval única: edificios que parecen normales por delante pero alcanzan hasta 11 plantas aprovechando el desnivel del barranco.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="trivia" class="container reveal">
+        <div class="section-title">
+            <h2 data-i18n="trivia-title">Curiosidades y Gastronomía</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <h3 data-i18n="trivia-1-title">¿Colgadas o Colgantes?</h3>
+                <p data-i18n="trivia-1-text">Precisión local: son <strong>Casas Colgadas</strong>, no colgantes. Se llaman así porque están suspendidas literalmente sobre el abismo.</p>
+            </div>
+            <div class="card">
+                <h3 data-i18n="trivia-2-title">Gastronomía Típica</h3>
+                <p data-i18n="trivia-2-text">La cocina de Cuenca es honesta y pastoril. Platos como el Morteruelo o los Zarajos son esenciales para entender la cultura local (ver sección más abajo).</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gastronomy-teaser" class="container reveal">
+        <div class="section-title">
+            <h2 data-i18n="gastro-title">Gastronomía Conquense</h2>
+            <div class="underline"></div>
+            <p data-i18n="gastro-sub" style="text-align: center; margin-top: 20px; color: var(--text-secondary);">Morteruelo, Zarajos, Alajú... Sabores que definen una tierra.</p>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="gastronomia.html" class="nav-button" data-i18n="gastro-btn">Descubrir Gastronomía</a>
+        </div>
+    </section>
+
+    <section id="location" class="container reveal">
+        <div class="section-title">
+            <h2 data-i18n="location-title">Ubicación y Navegación</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3056.845423871268!2d-2.1298816!3d40.0782161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd672727142b6b0b%3A0xc3d178f5f00e99d2!2sCasas%20Colgadas%20de%20Cuenca!5e0!3m2!1ses!2ses!4v1711364500000!5m2!1ses!2ses" 
+                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="https://share.google/bQIPILn5USo7byNqK" target="_blank" class="nav-button" data-i18n="nav-btn">Navegar con Google Maps</a>
+        </div>
+    </section>
+
+    <footer class="reveal">
+        <div class="container">
+            <h3 data-i18n="footer-tip-title" style="color: var(--accent-color); margin-bottom: 20px;">Consejo para el Turista</h3>
+            <p data-i18n="footer-tip-text" style="color: var(--text-secondary); margin-bottom: 30px;">
+                Lo mejor es "perderse". Sube hasta el <strong>Barrio del Castillo</strong> y baja caminando hacia la Plaza Mayor para disfrutar de los mejores miradores sin esfuerzo.
+            </p>
+            <p data-i18n="footer-copy" style="font-size: 0.8rem; color: #444;">&copy; 2026 Casco Antiguo de Cuenca - Diseño Premium</p>
+        </div>
+    </footer>
+
+    <button id="share-btn" class="share-fab" title="Compartir esta página">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

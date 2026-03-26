@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gastronomía de Cuenca | Sabores Tradicionales</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: var(--transition-fast);
+        }
+        .back-link:hover {
+            border-bottom-color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo" style="text-decoration: none;">CUENCA</a>
+            <div class="lang-toggle">
+                <span class="lang-btn active" id="lang-es" onclick="setLanguage('es')">ES</span>
+                <span class="lang-divider">|</span>
+                <span class="lang-btn" id="lang-en" onclick="setLanguage('en')">EN</span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero" style="height: 60vh; background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('gastronomia conquense/images (8).jpg');">
+        <div class="hero-content">
+            <p data-i18n="gastro-hero-sub">El Placer de la Serranía</p>
+            <h1 data-i18n="gastro-hero-title">Gastronomía</h1>
+        </div>
+    </header>
+
+    <section class="container reveal">
+        <div class="section-title">
+            <h2 data-i18n="gastro-intro-title">Texturas y Sabores Únicos</h2>
+            <div class="underline"></div>
+            <p data-i18n="gastro-intro-text" style="text-align: center; margin-top: 20px; color: var(--text-secondary); max-width: 800px; margin: 20px auto;">
+                La gastronomía conquense es famosa por su carácter pastoril, honesto y lleno de fuerza. Aquí te presentamos los platos más emblemáticos con todo el detalle de sus texturas tradicionales.
+            </p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <img src="gastronomia conquense/images (2).jpg" alt="Morteruelo" class="card-image">
+                <div class="card-content">
+                    <h3 data-i18n="morteruelo-title">Morteruelo</h3>
+                    <p data-i18n="morteruelo-text">Un guiso de consistencia densa elaborado con carnes de caza (liebre, conejo, perdiz), hígado de cerdo y pan rallado. Es un plato que cuenta la historia de los inviernos en la sierra.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="gastronomia conquense/images (1).jpg" alt="Zarajos" class="card-image">
+                <div class="card-content">
+                    <h3 data-i18n="zarajos-title">Zarajos</h3>
+                    <p data-i18n="zarajos-text">Un aperitivo esencial: intestinos de cordero lechal enrollados en sarmientos de vid y asados a fuego vivo o a la plancha. El resultado es una textura crujiente e inigualable.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="gastronomia conquense/images.jpg" alt="Ajoarriero" class="card-image">
+                <div class="card-content">
+                    <h3 data-i18n="ajoarriero-title">Ajoarriero</h3>
+                    <p data-i18n="ajoarriero-text">Una emulsión suave de bacalao, patata, ajo y aceite de oliva virgen. Decorado tradicionalmente con nueces, es un manjar delicado y potente a la vez.</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="back-link" data-i18n="back-btn">&larr; Volver al Casco Antiguo</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p data-i18n="gastro-footer" style="color: var(--text-secondary);">&copy; 2026 Gastronomía de Cuenca - Sabores Patrimonio de la Humanidad</p>
+        </div>
+    </footer>
+
+    <button id="share-btn" class="share-fab" title="Compartir esta página">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
