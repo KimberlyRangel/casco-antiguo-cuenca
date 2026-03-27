@@ -34,6 +34,16 @@ const translations = {
         "footer-tip-title": "Consejo para el Turista",
         "footer-tip-text": "Lo mejor es 'perderse'. Sube hasta el <strong>Barrio del Castillo</strong> y baja caminando hacia la Plaza Mayor para disfrutar de los mejores miradores sin esfuerzo.",
         "footer-copy": "&copy; 2026 Casco Antiguo de Cuenca - Diseño Premium",
+        "weather-loading": "Cargando...",
+        "weather-error": "Clima no disponible",
+        "weather-sunny": "Soleado",
+        "weather-clear": "Despejado",
+        "weather-partly-cloudy": "Parcialmente nublado",
+        "weather-cloudy": "Nublado",
+        "weather-overcast": "Cubierto",
+        "weather-mist": "Neblina",
+        "weather-rain": "Lluvia",
+        "weather-snow": "Nieve",
         "gastro-hero-sub": "El Placer de la Serranía",
         "gastro-hero-title": "Gastronomía",
         "gastro-intro-title": "Texturas y Sabores Únicos",
@@ -82,6 +92,16 @@ const translations = {
         "footer-tip-title": "Tourist Tip",
         "footer-tip-text": "The best thing is to 'get lost'. Go up to the <strong>Castle Neighborhood</strong> and walk down towards the Plaza Mayor to enjoy the best viewpoints without effort.",
         "footer-copy": "&copy; 2026 Cuenca Old Town - Premium Design",
+        "weather-loading": "Loading...",
+        "weather-error": "Weather unavailable",
+        "weather-sunny": "Sunny",
+        "weather-clear": "Clear",
+        "weather-partly-cloudy": "Partly cloudy",
+        "weather-cloudy": "Cloudy",
+        "weather-overcast": "Overcast",
+        "weather-mist": "Mist",
+        "weather-rain": "Rain",
+        "weather-snow": "Snow",
         "gastro-hero-sub": "The Pleasure of the Highlands",
         "gastro-hero-title": "Gastronomy",
         "gastro-intro-title": "Unique Textures and Flavors",
@@ -113,13 +133,81 @@ function setLanguage(lang) {
             el.innerHTML = translations[lang][key];
         }
     });
+
+    // Update weather description if it exists
+    if (typeof updateWeatherUI === 'function') {
+        updateWeatherUI();
+    }
 }
 
 // Initialize language on load
 document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('preferredLang') || 'es';
     setLanguage(savedLang);
+    fetchWeather();
 });
+
+const weatherMap = {
+    "113": { icon: "☀️", key: "weather-sunny" },
+    "116": { icon: "⛅", key: "weather-partly-cloudy" },
+    "119": { icon: "☁️", key: "weather-cloudy" },
+    "122": { icon: "☁️", key: "weather-overcast" },
+    "143": { icon: "🌫️", key: "weather-mist" },
+    "248": { icon: "🌫️", key: "weather-mist" },
+    "260": { icon: "🌫️", key: "weather-mist" },
+    "176": { icon: "🌦️", key: "weather-rain" },
+    "293": { icon: "🌧️", key: "weather-rain" },
+    "296": { icon: "🌧️", key: "weather-rain" },
+    "299": { icon: "🌧️", key: "weather-rain" },
+    "302": { icon: "🌧️", key: "weather-rain" },
+    "305": { icon: "🌧️", key: "weather-rain" },
+    "308": { icon: "🌧️", key: "weather-rain" },
+    "227": { icon: "❄️", key: "weather-snow" },
+    "230": { icon: "❄️", key: "weather-snow" }
+};
+
+let currentWeatherData = null;
+
+async function fetchWeather() {
+    try {
+        const response = await fetch('https://wttr.in/Cuenca?format=j1');
+        if (!response.ok) throw new Error('API Error');
+        const data = await response.json();
+        const current = data.current_condition[0];
+        
+        currentWeatherData = {
+            temp: current.temp_C,
+            code: current.weatherCode
+        };
+        
+        updateWeatherUI();
+    } catch (error) {
+        console.error('Error fetching weather:', error);
+        const descEl = document.getElementById('weather-desc');
+        if (descEl) descEl.setAttribute('data-i18n', 'weather-error');
+        setLanguage(localStorage.getItem('preferredLang') || 'es');
+    }
+}
+
+function updateWeatherUI() {
+    if (!currentWeatherData) return;
+    
+    const iconEl = document.getElementById('weather-icon');
+    const tempEl = document.getElementById('weather-temp');
+    const descEl = document.getElementById('weather-desc');
+    
+    if (tempEl) tempEl.innerText = `${currentWeatherData.temp}°C`;
+    
+    const weatherInfo = weatherMap[currentWeatherData.code] || { icon: "🌡️", key: "weather-clear" };
+    
+    if (iconEl) iconEl.innerText = weatherInfo.icon;
+    if (descEl) {
+        descEl.setAttribute('data-i18n', weatherInfo.key);
+        // Trigger translation update for this element
+        const lang = localStorage.getItem('preferredLang') || 'es';
+        descEl.innerHTML = translations[lang][weatherInfo.key] || weatherInfo.key;
+    }
+}
 
 // Intersection Observer for scroll animations
 const observerOptions = {
@@ -149,6 +237,45 @@ document.addEventListener('DOMContentLoaded', () => {
             heroContent.style.transform = 'translateY(0)';
         }, 100);
     }
+});
+
+// Lightbox Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const closeBtn = document.querySelector('.lightbox-close');
+
+    if (!lightbox || !lightboxImg || !closeBtn) return;
+
+    // Attach click event to all card images
+    document.querySelectorAll('.card-image').forEach(image => {
+        image.style.cursor = 'zoom-in';
+        image.addEventListener('click', () => {
+            lightboxImg.src = image.src;
+            lightboxCaption.textContent = image.alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scroll
+        });
+    });
+
+    // Close lightbox
+    const closeLightbox = () => {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scroll
+    };
+
+    closeBtn.addEventListener('click', closeLightbox);
+    
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
 });
 
 // Share functionality
